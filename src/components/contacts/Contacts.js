@@ -1,16 +1,17 @@
 import React, { Component } from "react";
 import Contact from "./Contact";
 import { Consumer } from "../../context";
+import uuid from "uuid";
 
 class Contacts extends Component {
   //delete a certain contact from contacts according to contact.id
-  deleteContact = id => {
-    const { contacts } = this.state;
-    const newContacts = contacts.filter(contact => contact.id !== id);
-    this.setState({
-      contacts: newContacts
-    });
-  };
+  // deleteContact = id => {
+  //   const { contacts } = this.state;
+  //   const newContacts = contacts.filter(contact => contact.id !== id);
+  //   this.setState({
+  //     contacts: newContacts
+  //   });
+  // };
 
   render() {
     return (
@@ -21,10 +22,11 @@ class Contacts extends Component {
             <React.Fragment>
               {contacts.map(contact => (
                 <Contact
-                  key={contact.id}
                   contact={contact}
+                  key={uuid()}
+
                   //Contact's onDeleteClick() call this deleteClickHandler
-                  deleteClickHandler={this.deleteContact.bind(this, contact.id)}
+                  // deleteClickHandler={this.deleteContact.bind(this, contact.id)}
                 />
               ))}
             </React.Fragment>

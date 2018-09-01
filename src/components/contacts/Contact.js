@@ -10,14 +10,10 @@ class Contact extends Component {
   onDeleteClick = (id, dispatch) => {
     dispatch({ type: "DELETE_CONTACT", payload: id });
   };
-  onShowClick = () => {
-    this.setState({
-      showContactInfo: !this.state.showContactInfo
-    });
-  };
 
   render() {
     const { id, name, email, phone } = this.props.contact;
+    //const { contact } = this.props;
     const { showContactInfo } = this.state;
 
     return (
@@ -27,11 +23,13 @@ class Contact extends Component {
           return (
             <div className="card card-body mb-3">
               <h4>
-                {name}
-                {""}
-                {/* icon */}
+                {name}{" "}
                 <i
-                  onClick={this.onShowClick}
+                  onClick={() =>
+                    this.setState({
+                      showContactInfo: !this.state.showContactInfo
+                    })
+                  }
                   className="fas fa-sort-down"
                   style={{ cursor: "pointer" }}
                 />
